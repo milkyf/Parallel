@@ -1,2 +1,2 @@
 # Prallel001
-one picture
+OpenCVをつかいます。
