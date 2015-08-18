@@ -27,8 +27,8 @@ cvtColor(color_img, gray_img,CV_RGB2GRAY);
 */
 	//画像の名前を変えてるので気を付けてください。
 	//画像ファイルは、どれも.cppファイルと同じ場所に保存してください。XXXXXXXXXXここ割と忘れやすいです。
-	char *pic[] = { "pic1.JPG","pic2.JPG","pic3.JPG" };//でかい画像
-	char *ship[] = { "ship00.png","ship01.png","ship02.png","ship03.png","ship04.png","ship05.png",
+	const char *pic[] = { "pic1.JPG","pic2.JPG","pic3.JPG" };//でかい画像
+	const char *ship[] = { "ship00.png","ship01.png","ship02.png","ship03.png","ship04.png","ship05.png",
 		"ship06.png","ship07.png","ship08.png","ship09.png","ship10.png","ship11.png","ship12.png","ship13.png"};//船の画像たち
 
 	/*
