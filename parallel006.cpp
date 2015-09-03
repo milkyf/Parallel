@@ -47,13 +47,15 @@ void threadFuncA()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
+			resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
 
 			for(int y = 0; y < gray_img.rows / 2; y++){
 				for(int x = 0; x < gray_img.cols; x++){
-					half_gray.at<uchar>(y, x) = gray_img.at<uchar>(y, x);
+					half_gray.data[y *half_gray.step + x * half_gray.elemSize()] = gray_img.data[y *gray_img.step + x * gray_img.elemSize()];
+					//gray_img.data[y *gray_img.step + x * gray_img.elemSize()] = half_gray.data[y * half_gray.step + x * half_gray.elemSize()];
 				}
 			}
 
@@ -80,7 +82,7 @@ void threadFuncA()
 				ss << str << i << ".png" ;
 				string filename = ss.str();
 				imwrite(filename, color_img);
-				resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
+				//resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
 				//imshow(ship[i],color_img);//第1引数の名前のウィンドウに，第2引数のMatクラスのインスタンスの中にある画像を表示する．
 				//resize(color_img, color_img, Size(color_img.cols*4, color_img.rows*4));//画像をもとの大きさに戻しておく(でないとfor文で繰り返されるうちにどんどん小さくなってしまう)
 				//waitKey(1);//カッコの中はミリ秒
@@ -97,6 +99,7 @@ void threadFuncB()
 	{
 		
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
+
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -106,13 +109,15 @@ void threadFuncB()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
+			resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
 
 			for(int y = 0; y < gray_img.rows / 2; y++){
 				for(int x = 0; x < gray_img.cols; x++){
-					half_gray.at<uchar>(y, x) = gray_img.at<uchar>(y, x);
+					half_gray.data[y *half_gray.step + x * half_gray.elemSize()] = gray_img.data[y *gray_img.step + x * gray_img.elemSize()];
+					//gray_img.data[y *gray_img.step + x * gray_img.elemSize()] = half_gray.data[y * half_gray.step + x * half_gray.elemSize()];
 				}
 			}
 
@@ -140,7 +145,7 @@ void threadFuncB()
 				ss << str << i << ".png" ;
 				string filename = ss.str();
 				imwrite(filename, color_img);
-				resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
+				//resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
 				//imshow(ship[i],color_img);//第1引数の名前のウィンドウに，第2引数のMatクラスのインスタンスの中にある画像を表示する．
 				resize(color_img, color_img, Size(color_img.cols*4, color_img.rows*4));//画像をもとの大きさに戻しておく(でないとfor文で繰り返されるうちにどんどん小さくなってしまう)
 				//waitKey(1);//カッコの中はミリ秒
@@ -166,6 +171,7 @@ void threadFuncC()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
+			resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
 			Mat gray_img, result;
 
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
@@ -173,7 +179,8 @@ void threadFuncC()
 
 			for(int y = 0; y < gray_img.rows / 2; y++){
 				for(int x = 0; x < gray_img.cols; x++){
-					half_gray.at<uchar>(y, x) = gray_img.at<uchar>(y, x);
+					half_gray.data[y *half_gray.step + x * half_gray.elemSize()] = gray_img.data[y *gray_img.step + x * gray_img.elemSize()];
+					//gray_img.data[y *gray_img.step + x * gray_img.elemSize()] = half_gray.data[y * half_gray.step + x * half_gray.elemSize()];
 				}
 			}
 
@@ -201,7 +208,7 @@ void threadFuncC()
 				ss << str << i << ".png" ;
 				string filename = ss.str();
 				imwrite(filename, color_img);
-				resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
+				//resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
 				//imshow(ship[i],color_img);//第1引数の名前のウィンドウに，第2引数のMatクラスのインスタンスの中にある画像を表示する．
 				resize(color_img, color_img, Size(color_img.cols*4, color_img.rows*4));//画像をもとの大きさに戻しておく(でないとfor文で繰り返されるうちにどんどん小さくなってしまう)
 				//waitKey(1);//カッコの中はミリ秒
@@ -227,6 +234,7 @@ void threadFuncD()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
+			resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
 			Mat gray_img, result;
 
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
@@ -234,7 +242,8 @@ void threadFuncD()
 
 			for(int y = 0; y < gray_img.rows / 2; y++){
 				for(int x = 0; x < gray_img.cols; x++){
-					half_gray.at<uchar>(y, x) = gray_img.at<uchar>(y, x);
+					half_gray.data[y *half_gray.step + x * half_gray.elemSize()] = gray_img.data[y *gray_img.step + x * gray_img.elemSize()];
+					//gray_img.data[y *gray_img.step + x * gray_img.elemSize()] = half_gray.data[y * half_gray.step + x * half_gray.elemSize()];
 				}
 			}
 
@@ -261,7 +270,7 @@ void threadFuncD()
 				ss << str << i << ".png" ;
 				string filename = ss.str();
 				imwrite(filename, color_img);
-				resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
+				//resize(color_img, color_img, Size(color_img.cols/4, color_img.rows/4));//出力される画像が大きいので、出力画像を4分の1に縮小
 				//imshow(ship[i],color_img);//第1引数の名前のウィンドウに，第2引数のMatクラスのインスタンスの中にある画像を表示する．
 				resize(color_img, color_img, Size(color_img.cols*4, color_img.rows*4));//画像をもとの大きさに戻しておく(でないとfor文で繰り返されるうちにどんどん小さくなってしまう)
 				//waitKey(1);//カッコの中はミリ秒
@@ -303,3 +312,4 @@ int main(int argc, char ** argv)
 	waitKey();
 	return 0;
 }
+//src.at<uchar>(y,x) =src.data[y*src.step + x*slemSize()]
