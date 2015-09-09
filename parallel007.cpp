@@ -26,11 +26,33 @@ const char *pic[] = { "pic1.JPG","pic2.JPG","pic3.JPG" };
 const char *ship[] = { "ship00.png","ship01.png","ship02.png","ship03.png","ship04.png","ship05.png",
 				"ship06.png","ship07.png","ship08.png","ship09.png","ship10.png","ship11.png","ship12.png","ship13.png"};
 
+Mat color_tmp;
+Mat gray_tmp;
+Mat color_img;
+
+void cvt(){
+for(int i = 0 ;i < 14; i++)
+{
+		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);//テンプレート画像をサイズ変更
+		Mat gray_tmp;
+		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
+}
+for(int j = 0; j < 3; j++)
+{
+			Mat color_img = imread(pic[j]);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
+			Mat gray_img, result;
+			cvtColor(color_img, gray_img,CV_RGB2GRAY);
+			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
+}
+}
+
 void threadFuncA()
 {
 	int i = 0;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);//テンプレート画像をサイズ変更
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);//テンプレート画像をサイズ変更
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -40,7 +62,7 @@ void threadFuncA()
 			start = clock();//検索開始時間
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -83,7 +105,7 @@ void threadFuncB()
 {
 	int i = 1; 
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -93,7 +115,7 @@ void threadFuncB()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -134,7 +156,7 @@ void threadFuncC()
 {
 	int i = 2;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -144,7 +166,7 @@ void threadFuncC()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -185,7 +207,7 @@ void threadFuncD()
 {
 	int i = 3;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -195,7 +217,7 @@ void threadFuncD()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -237,7 +259,7 @@ void threadFuncE()
 {
 	int i = 4;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -247,7 +269,7 @@ void threadFuncE()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -288,7 +310,7 @@ void threadFuncF()
 {
 	int i = 5;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -298,7 +320,7 @@ void threadFuncF()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -339,7 +361,7 @@ void threadFuncG()
 {
 	int i = 6;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -349,7 +371,7 @@ void threadFuncG()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -390,7 +412,7 @@ void threadFuncH()
 {
 	int i = 7;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -400,7 +422,7 @@ void threadFuncH()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -441,7 +463,7 @@ void threadFuncI()
 {
 	int i = 8;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -451,7 +473,7 @@ void threadFuncI()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -492,7 +514,7 @@ void threadFuncJ()
 {
 	int i = 9;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -502,7 +524,7 @@ void threadFuncJ()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -544,7 +566,7 @@ void threadFuncK()
 {
 	int i =10;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -554,7 +576,7 @@ void threadFuncK()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);//resize to 1/2 size
+			resize(color_img, color_img, Size(), 0.4, 0.4);//resize to 1/2 size
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -597,7 +619,7 @@ void threadFuncL()
 {
 	int i = 11;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -607,7 +629,7 @@ void threadFuncL()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
 			Mat half_gray = Mat(gray_img.rows / 2, gray_img.cols, CV_8UC1);
@@ -649,7 +671,7 @@ void threadFuncM()
 {
 	int i = 12;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 
@@ -659,7 +681,7 @@ void threadFuncM()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
@@ -703,7 +725,7 @@ void threadFuncN()
 {
 	int i = 13;
 		Mat color_tmp = imread(ship[i]);//カラー画像を読み込む
-		resize(color_tmp, color_tmp, Size(), 0.5, 0.5);
+		resize(color_tmp, color_tmp, Size(), 0.4, 0.4);
 		Mat gray_tmp;
 		cvtColor(color_tmp, gray_tmp,CV_RGB2GRAY);// グレースケールに変換する
 		for(int j = 0; j < 3; j++)
@@ -712,7 +734,7 @@ void threadFuncN()
 			start = clock();
 
 			Mat color_img = imread(pic[j]);
-			resize(color_img, color_img, Size(), 0.5, 0.5);
+			resize(color_img, color_img, Size(), 0.4, 0.4);
 			Mat gray_img, result;
 
 			cvtColor(color_img, gray_img,CV_RGB2GRAY);
